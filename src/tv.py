@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 db.create_all()
 
 login_manager = LoginManager(app)
-login_manager.login_view = '/login'
+login_manager.login_view = "/login"
 
 from data import PR, User, create_db
 
@@ -26,23 +26,29 @@ except:
     create_db()
 
 from users import users_page
+
 app.register_blueprint(users_page)
 
 from admin import admin_page
+
 app.register_blueprint(admin_page)
 
 from login import login_page
+
 app.register_blueprint(login_page)
 
-@app.route('/')
-@app.route('/index')
+
+@app.route("/")
+@app.route("/index")
 def index():
     return render_template("pr.html")
+
 
 # Delete old PRs
 def pr_cleanup():
     PR.query.filter(PR.end_date < datetime.now()).delete()
     db.session.commit()
+
 
 # Return a JSON list of PRs to currently be displayed
 @app.route("/pr")
@@ -50,14 +56,14 @@ def pr():
     pr_cleanup()
 
     # Check if priority PR exists
-    priority = PR.query.filter(PR.priority==1, PR.start_date < datetime.now()).first() 
+    priority = PR.query.filter(PR.priority == 1, PR.start_date < datetime.now()).first()
     if priority != None:
-        return json.jsonify(
-            ["/static/pr/" + priority.file_name]
-        )
+        return json.jsonify(["/static/pr/" + priority.file_name])
 
     # Return all active PRs
     return json.jsonify(
-        [("/static/pr/" + user.file_name) 
-            for user in PR.query.filter(PR.start_date < datetime.now()).all()]
-        )
+        [
+            ("/static/pr/" + user.file_name)
+            for user in PR.query.filter(PR.start_date < datetime.now()).all()
+        ]
+    )
