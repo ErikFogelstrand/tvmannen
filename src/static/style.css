@@ -1,4 +1,10 @@
+@font-face {
+  font-family: "ComicMono";
+  src: url("ComicMono.ttf");
+}
+
 body{
-  --header-back-color: #fa6601;
+  font-family: "ComicMono";
+  --header-back-color: #09cdda;
   --header-fore-color: #ffffff;
 }
