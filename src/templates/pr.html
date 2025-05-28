@@ -8,6 +8,12 @@
   <meta charset="utf-8">
   <meta http-equiv="refresh" content="300">
   <style>
+    @font-face {
+      font-family: "ComicMono";
+      src: url("ComicMono.ttf");
+    }
+
+
     html,
     body {
       width: 100%;
@@ -24,8 +30,8 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      font-family: Helvetica, Arial, Sans-Serif;
-      background-color: #fa6607;
+      font-family: "ComicMono";
+      background-color: #09cdda;
       font-size: 3em;
       background-repeat: no-repeat;
     }
@@ -52,7 +58,7 @@
       if (prs.length < 1)
       {
         body.style.backgroundImage = "url(https://chalmers.it/itlogo.svg)";
-        body.style.backgroundColor = "#fa6607";
+        body.style.backgroundColor = "#09cdda";
         return;
       }
 
