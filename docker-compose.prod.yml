@@ -7,7 +7,7 @@ services:
         #    - "4001:4001"
         command: uwsgi --enable-threads --http :4001 --module tv:app
         volumes:
-            -images:/src/static/pr
+            - images:/src/static/pr
 
 volumes:
     images:
