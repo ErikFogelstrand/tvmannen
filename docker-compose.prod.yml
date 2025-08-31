@@ -2,7 +2,7 @@ version: '3'
 
 services:
     web:
-        image: github.com/ErikFogelstrand/tvmannen
+        image: github.com/erikfogelstrand/tvmannen
         #ports:
         #    - "4001:4001"
         command: uwsgi --enable-threads --http :4001 --module tv:app
