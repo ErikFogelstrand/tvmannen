@@ -2,7 +2,7 @@ version: '3'
 
 services:
     web:
-        #build: .
+        build: .
         #ports:
         #    - "4001:4001"
         command: uwsgi --enable-threads --http :4001 --module tv:app
